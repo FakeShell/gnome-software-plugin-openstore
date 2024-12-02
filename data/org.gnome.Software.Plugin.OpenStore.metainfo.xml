@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="addon">
+  <id>org.gnome.Software.Plugin.OpenStore</id>
+  <extends>org.gnome.Software.desktop</extends>
+  <name>Open Store App Support</name>
+  <summary>Allow to install apps from Open Store</summary>
+  <url type="homepage">https://furilabs.com</url>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0-or-later</project_license>
+  <update_contact>bardia@furilabs.com</update_contact>
+</component>
