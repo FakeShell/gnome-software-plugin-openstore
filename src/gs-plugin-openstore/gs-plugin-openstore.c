@@ -157,7 +157,7 @@ gs_plugin_openstore_refresh_metadata_async (GsPlugin *plugin,
                      "UpdateCache",
                      g_variant_new ("()"),
                      G_DBUS_CALL_FLAGS_NONE,
-                     -1,  /* timeout, -1 for default */
+                     G_MAXINT,  /* no timeout: queued behind any running install in store-provider */
                      cancellable,
                      openstore_update_cache_cb,
                      g_steal_pointer (&task));
@@ -698,7 +698,7 @@ gs_plugin_openstore_install_apps_async (GsPlugin *plugin,
                      "Install",
                      g_variant_new ("(s)", package_name),
                      G_DBUS_CALL_FLAGS_NONE,
-                     -1,
+                     G_MAXINT,  /* no timeout: installing dependencies via apt can take minutes */
                      cancellable,
                      openstore_install_app_cb,
                      g_steal_pointer (&task));
@@ -845,7 +845,7 @@ gs_plugin_openstore_uninstall_apps_async (GsPlugin *plugin,
                      "UninstallApp",
                      g_variant_new ("(s)", gs_app_get_metadata_item (gs_app_list_index (uninstall_list, 0), "openstore::package-name")),
                      G_DBUS_CALL_FLAGS_NONE,
-                     -1,
+                     G_MAXINT,  /* no timeout: queued behind any running install in store-provider */
                      cancellable,
                      openstore_uninstall_app_cb,
                      g_steal_pointer (&task));
@@ -982,7 +982,7 @@ gs_plugin_openstore_update_apps_async (GsPlugin *plugin,
                      "UpgradePackages",
                      g_variant_new ("(as)", builder),
                      G_DBUS_CALL_FLAGS_NONE,
-                     -1,
+                     G_MAXINT,  /* no timeout: upgrades download and install can take minutes */
                      cancellable,
                      openstore_upgrade_packages_cb,
                      g_steal_pointer (&task));
